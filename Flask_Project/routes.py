@@ -86,7 +86,7 @@ def post():
 		    	smtp.starttls()
 		    	smtp.ehlo()
 		 
-		    	smtp.login('nihalvatti@gmail.com ','srivatti1799')
+		    	smtp.login('write ur mail here ','write ur pasword here')
 		    	subject = form.ptitle.data+'-Upgrading Society'
 		    	body ='Title- '+form.ptitle.data+'\nCity- '+form.pcity.data+'\nSector- '+form.psector.data+'\nDescription- '+form.pdesc.data+'\n\nPosted by\n'+usname
 		 
