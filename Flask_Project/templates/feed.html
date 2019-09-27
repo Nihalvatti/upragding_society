@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="media border p-3">
+  <img src="default.jpeg" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+  <div class="media-body">
+    <h4>{{ post.uname }}<br><small><i><b>Project Title</b> {{ post.problemName }}<br>
+    <b>City</b> {{ post.city }}<br> 
+    <b>Sector</b> {{ post.sector }}<br></i></small></h4>
+    <p>{{ post.problemDesc }}</p><br>
+    <button type="button" class="btn btn-success">Post Solution</button>
+    <tb><button type="button" class="btn btn-success">View Solution</button>
+  </div>
+</div><br><br>
+    {% endfor %}
+{% endblock content %}
+

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Post Your Problem</legend>
+                <div class="form-group">
+                    {{ form.ptitle.label(class="form-control-label") }}
+
+                        {{ form.ptitle(class="form-control form-control-lg") }}
+                        
+                    
+                </div>
+                <div class="form-group">
+                    {{ form.pcity.label(class="form-control-label") }}
+                   
+                        {{ form.pcity(class="form-control form-control-lg ") }}
+                       
+                </div>
+                <div class="form-group">
+                    {{ form.psector.label(class="form-control-label") }}
+                       {{ form.psector(class="form-control form-control-lg ") }}
+                       
+                </div>
+                <div class="form-group">
+                    {{ form.pdesc.label(class="form-control-label") }}
+                   
+                        {{ form.pdesc(class="form-control form-control-lg ") }}
+                       
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}
