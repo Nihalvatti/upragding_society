@@ -7,22 +7,19 @@
 	    <!-- Bootstrap CSS -->
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		{% if title%}
-			<title> Flask-Blog- {{ title }}</title>
+			<title> Upgrading-Society- {{ title }}</title>
 		{% else %}
-			<title>Flask Blog</title>
+			<title>Upgrading Society</title>
 		{% endif %}
 	</head>
 	<body>
 		 <nav class="navbar navbar-expand-sm navbar-dark bg-info"> 
-		  <ul class="navbar-nav">
+		  <ul class="nav navbar-nav">
 		    <li class="nav-item">
-		      <a class="nav-link" href="#">FEED</a>
+		      <a class="nav-link" href="{{ url_for('feed') }}">FEED</a>
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link" href="#">ABOUT US</a>
-		    </li>
-		    <li class="nav-item">
-		      <a class="nav-link" href="#">CONTACT US</a>
+		      <a class="nav-link" href="{{ url_for('contact') }}">CONTACT US</a>
 		    </li>
 		  </ul>
 		  <ul class="nav navbar-nav navbar-right">

@@ -1,12 +1,13 @@
 
 from flask import render_template, url_for, flash, redirect, request
-from Flask_Project.forms import RegistrationForm,LoginForm,PostProblems,Solution
+from Flask_Project.forms import RegistrationForm,LoginForm,PostProblems,SolutionForm,UpdateAccountForm
 from Flask_Project.models import User,Problem,Solution
 from Flask_Project import app,db,bcrypt
 from sqlalchemy import desc
 from flask_login import login_user, current_user, logout_user, login_required
 import os
 import smtplib
+from PIL import Image
 
 
 
@@ -53,6 +54,20 @@ def feed():
     posts=Problem.query.all()
     return render_template('feed.html',title='feed',posts=posts)
 
+
+
+
+@app.route("/view_solution")
+def view_solution():
+	pid=request.args.get('problemId')
+	posts=Solution.query.filter(Solution.problemID==pid).all()
+	return render_template('vsol.html',title='Solution',posts=posts)
+
+
+
+
+	    
+
 @app.route("/post",methods=['GET', 'POST'])
 @login_required
 def post():
@@ -71,7 +86,7 @@ def post():
 		    	smtp.starttls()
 		    	smtp.ehlo()
 		 
-		    	smtp.login('harshavardhan45123@gmail.com','sweethome2')
+		    	smtp.login('nihalvatti@gmail.com ','srivatti1799')
 		    	subject = form.ptitle.data+'-Upgrading Society'
 		    	body ='Title- '+form.ptitle.data+'\nCity- '+form.pcity.data+'\nSector- '+form.psector.data+'\nDescription- '+form.pdesc.data+'\n\nPosted by\n'+usname
 		 
@@ -82,9 +97,19 @@ def post():
 		return redirect(url_for('feed')) 
 	return render_template('post.html',title='post',form=form)
 
-@app.route("/solution")
+@app.route("/solution", methods=['GET', 'POST'])
 def solution():
-	form=Solution()
+	form=SolutionForm()
+	
+	if form.validate_on_submit():
+		user=User.query.filter(User.id==current_user.id).first()
+		usname=user.name
+		pid=request.args.get('problemId')
+		print(pid)
+		sol=Solution(solutionDesc=form.sdesc.data,voteCount=1,problemID=pid,solutionTitle=form.stitle.data)
+		db.session.add(sol)
+		db.session.commit()
+		return redirect(url_for('feed')) 
 	return render_template('solution.html',title='Solution',form=form)
 
 @app.route("/logout")
@@ -95,10 +120,28 @@ def logout():
 
 @app.route("/account", methods=['GET', 'POST'])
 @login_required
-
 def account():
-	image_file =url_for('static', filename='profile_pics/'+ current_user.image_file)
-	return render_template('account.html',title='account',image_file=image_file)
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+            current_user.image_file = picture_file
+        current_user.name = form.username.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash('Your account has been updated!', 'success')
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.username.data = current_user.name
+        form.email.data = current_user.email
+    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    return render_template('account.html', title='Account',
+                           image_file=image_file, form=form)
+@app.route("/contact")
+def contact():
+	return render_template('contact.html', title='contact Us')
+
+
 
 
 

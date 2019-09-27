@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="media border p-3">
+  <div class="media-body">
+    <h4>Posted By {{ current_user.name }}<br><small><i><b><br></h4>
+    <p>{{ post.solutionDesc }}</p><br>
+  </div>
+</div><br><br>
+    {% endfor %}
+{% endblock content %}

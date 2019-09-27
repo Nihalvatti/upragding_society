@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
         self.email = email
         self.password = password
         self.phone = phone
+    
  
 class Problem(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # key increases automatically\
@@ -43,10 +44,12 @@ class Problem(db.Model):
 class Solution(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # key increases automatically\
     problemID=db.Column(db.Integer)
+    solutionTitle=db.Column(db.String(150))
     solutionDesc = db.Column(db.String(150), nullable=False)
     voteCount=db.Column(db.Integer)
  
-    def __init__(self, problemID , solutionDesc, voteCount):
+    def __init__(self, problemID , solutionDesc, voteCount,solutionTitle):
         self.problemID = problemID
         self.solutionDesc = solutionDesc
         self.voteCount = voteCount
+        self.solutionTitle=solutionTitle

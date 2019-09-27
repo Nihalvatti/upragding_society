@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+	.head{
+	  			font-size: 30px;
+	  			color:#34495E  ;
+	  		}
+	  		.right{
+			    float: right;
+	  			font-size: 25px;
+	  		}
+	  		.mdet{
+				margin-left:10%;
+			}
+			.det{
+				margin-top:15%;
+			}
+			.iright{
+				margin-left: 15%;
+			}
+			.left{
+			    float: left;
+				background-color:#F8F9F9;  
+			}
+			.vl {
+                border-left: 6px solid;
+                height: 550px;
+                position: absolute;
+                left: 50%;
+                margin-left: -3px;
+				margin-top:100px;
+                top: 0;
+				border-color: #12BECA;
+                }
+				
+
+	  		@media only screen and (max-width: 576px){
+	  			.right{
+	  				font-size: 15px;
+	  				margin-left:0%;
+	  			}
+	  			.head{
+	  				font-size:15px;
+	  			}
+	  			.det{
+	  				margin-top: 10%;
+	  			}
+	  			.iright{
+				margin-left: 0%;
+			}
+			.left{
+				background-color:white;
+			}
+			.vl {
+                border-left: 6px ;
+                height: 550px;
+                position: absolute;
+                left: 50%;
+                margin-left: -3px;
+				margin-top:100px;
+                top: 0;
+				border-color: white;
+                }
+			.footer{
+			     padding-left: 0;
+                 border: transparent;
+                padding-bottom: 0px;
+               margin-bottom: 10px;
+             }			
+				
+			
+	  		}
+</style>
+<div class="left container-fluid col-md-offset-1 col-md-5 col-xs-12 col-lg-5 col-xl-5">
+	 		<span class="head">Give In Your Details</span><br><br><br>
+	 		<form action="https://script.google.com/macros/s/AKfycbwUyu72usyO44ULUFdOQtLM9kb1F1CfJpR0D5Ap/exec"method="POST" href="#">
+	 			<input type="text" placeholder="Name" class="form-control"/><br>
+	 			<input type="number" placeholder="Phone Number" class="form-control"/><br>
+	 			<input type="text" placeholder="Mail Id" class="form-control"/><br>
+	 			<textarea rows="5" placeholder="Any message" class="form-control"></textarea><br>
+	 			<input type="submit" value="sumbit"/><br><br>
+
+	 		</form>
+	 	</div>
+	   <div class="vl"></div>
+	 	<div class="right container-fluid col-md-5 col-xs-12 col-xl-5 col-lg-5">
+	 		<div class="iright container-fluid">
+		 		<span class="head">Contact Us</span>
+		 		<div class="det"><span  class="fas fa-envelope"></span><span class="mdet">example@gmail.com</span><br></div>
+				
+				<div class="det"><span class="fas fa-phone"></span><span class="mdet">7893498346</span><br></div>
+				<div class="det"><span class="fas fa-address-card"></span><span class="mdet" id="add"><span class="aa">505, Blossom</span><br><span class="a">   IndiraNagar,Gachibowli-32</span></span><br></div>
+			</div>
+		</div>
+{% endblock content %}
+
+
+
+
