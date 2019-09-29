@@ -5,6 +5,7 @@ Upgrading Society is a web application in which users can create accounts and po
 
 
 Thank You
+
 Nihal Vatti
 
 K V Srinivas
